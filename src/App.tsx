@@ -11,6 +11,7 @@ import ResetPasswordPage from './pages/ResetPassword'
 import DashboardPage from './pages/Dashboard'
 import SettingsPage from './pages/Settings'
 import TodayPage from './pages/TodayPage'
+import CalendarPage from './pages/Calendar'
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
               <Route path="/reset-password" element={<ResetPasswordPage />} />
               <Route path="/dashboard" element={<RequireAuth><DashboardPage /></RequireAuth>} />
               <Route path="/today" element={<RequireAuth><TodayPage /></RequireAuth>} />
+              <Route path="/calendar" element={<RequireAuth><CalendarPage /></RequireAuth>} />
               <Route path="/settings" element={<RequireAuth><SettingsPage /></RequireAuth>} />
               <Route path="*" element={<p className="py-20 text-center">Page not found.</p>} />
             </Routes>

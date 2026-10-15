@@ -31,14 +31,31 @@ export type Task = OwnedRow & {
   waiting_on: string | null
 }
 
+export type EventCategory = 'personal' | 'work' | 'health' | 'family' | 'finance' | 'learning' | 'spiritual' | 'other'
+
 export type CalendarEvent = OwnedRow & {
   title: string
   starts_at: string
   ends_at: string | null
   description: string | null
+  is_all_day: boolean
+  category: EventCategory
+  color: string | null
+  location: string | null
+  link_url: string | null
+  reminder_minutes: number | null
+  project_id: string | null
+  task_id: string | null
+  recurrence_rule: 'daily' | 'weekly' | 'monthly' | null
+  recurrence_until: string | null
 }
 
-export type Project = OwnedRow & { name: string; description: string | null }
+export type Project = OwnedRow & {
+  name: string
+  description: string | null
+  milestone_at: string | null
+  milestone_label: string | null
+}
 
 export type DailyPlan = OwnedRow & {
   plan_date: string

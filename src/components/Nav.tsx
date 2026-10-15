@@ -34,6 +34,7 @@ export default function Nav() {
           {user ? (
             <>
               <NavLink to="/today" className={linkClass} onClick={() => setOpen(false)}>Today</NavLink>
+              <NavLink to="/calendar" className={linkClass} onClick={() => setOpen(false)}>Calendar</NavLink>
               <NavLink to="/dashboard" className={linkClass} onClick={() => setOpen(false)}>Dashboard</NavLink>
               <NavLink to="/settings" className={linkClass} onClick={() => setOpen(false)}>Settings</NavLink>
               <span className="hidden px-2 text-xs text-[#8a7a65] sm:inline" title={user.email}>
