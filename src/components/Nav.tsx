@@ -33,6 +33,7 @@ export default function Nav() {
         <div className={`items-center gap-1 md:flex ${open ? 'absolute left-0 right-0 top-full flex flex-col bg-[#faf6ef] p-3 shadow-lg md:static md:flex-row md:bg-transparent md:p-0 md:shadow-none' : 'hidden md:flex'}`}>
           {user ? (
             <>
+              <NavLink to="/today" className={linkClass} onClick={() => setOpen(false)}>Today</NavLink>
               <NavLink to="/dashboard" className={linkClass} onClick={() => setOpen(false)}>Dashboard</NavLink>
               <NavLink to="/settings" className={linkClass} onClick={() => setOpen(false)}>Settings</NavLink>
               <span className="hidden px-2 text-xs text-[#8a7a65] sm:inline" title={user.email}>

@@ -25,7 +25,7 @@ export default function ResetPasswordPage() {
       setError(result.error)
       return
     }
-    navigate('/dashboard', { replace: true })
+    navigate('/today', { replace: true })
   }
 
   return (

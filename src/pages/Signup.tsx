@@ -26,7 +26,7 @@ export default function SignupPage() {
       setError(result.error)
       return
     }
-    navigate(result.needsVerification ? '/verify?pending=1' : '/dashboard', { replace: true })
+    navigate(result.needsVerification ? '/verify?pending=1' : '/today', { replace: true })
   }
 
   return (

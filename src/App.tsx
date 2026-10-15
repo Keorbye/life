@@ -10,6 +10,7 @@ import ForgotPasswordPage from './pages/ForgotPassword'
 import ResetPasswordPage from './pages/ResetPassword'
 import DashboardPage from './pages/Dashboard'
 import SettingsPage from './pages/Settings'
+import TodayPage from './pages/TodayPage'
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
               <Route path="/forgot-password" element={<RedirectIfAuthed><ForgotPasswordPage /></RedirectIfAuthed>} />
               <Route path="/reset-password" element={<ResetPasswordPage />} />
               <Route path="/dashboard" element={<RequireAuth><DashboardPage /></RequireAuth>} />
+              <Route path="/today" element={<RequireAuth><TodayPage /></RequireAuth>} />
               <Route path="/settings" element={<RequireAuth><SettingsPage /></RequireAuth>} />
               <Route path="*" element={<p className="py-20 text-center">Page not found.</p>} />
             </Routes>
