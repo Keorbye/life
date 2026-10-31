@@ -36,8 +36,11 @@ export default function Nav() {
               <NavLink to="/today" className={linkClass} onClick={() => setOpen(false)}>Today</NavLink>
               <NavLink to="/calendar" className={linkClass} onClick={() => setOpen(false)}>Calendar</NavLink>
               <NavLink to="/dashboard" className={linkClass} onClick={() => setOpen(false)}>Dashboard</NavLink>
-              <NavLink to="/settings" className={linkClass} onClick={() => setOpen(false)}>Settings</NavLink>
-              <span className="hidden px-2 text-xs text-[#8a7a65] sm:inline" title={user.email}>
+              <NavLink to="/mood" className={linkClass} onClick={() => setOpen(false)}>Mood</NavLink>
+              <NavLink to="/time-tracking" className={linkClass} onClick={() => setOpen(false)}>Time Track</NavLink>
+              <NavLink to="/pomodoro" className={linkClass} onClick={() => setOpen(false)}>Pomodoro</NavLink>
+              <NavLink to="/areas" className={linkClass} onClick={() => setOpen(false)}>Areas</NavLink>
+              <NavLink to="/resources" className={linkClass} onClick={() => setOpen(false)}>Resources</NavLink>
                 {user.email}
               </span>
               <button
@@ -51,6 +54,9 @@ export default function Nav() {
             <>
               <NavLink to="/login" className={linkClass} onClick={() => setOpen(false)}>Log in</NavLink>
               <NavLink to="/signup" className={linkClass} onClick={() => setOpen(false)}>Sign up</NavLink>
+              <NavLink to="/mood" className={linkClass} onClick={() => setOpen(false)}>Mood</NavLink>
+              <NavLink to="/time-tracking" className={linkClass} onClick={() => setOpen(false)}>Time Track</NavLink>
+              <NavLink to="/pomodoro" className={linkClass} onClick={() => setOpen(false)}>Pomodoro</NavLink>
             </>
           )}
         </div>

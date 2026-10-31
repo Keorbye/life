@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useAuth } from '../auth/AuthContext'
 import { supabase } from './supabase'
 import { todayISO } from './today-utils'
-import type { CalendarEvent, DailyPlan, Project, Task, TaskBucket } from './types'
+import type { CalendarEvent, DailyPlan, Project, Subtask, Task, TaskBucket } from './types'
 
 export function normaliseTask(row: Record<string, unknown>): Task {
   return {
@@ -11,17 +11,49 @@ export function normaliseTask(row: Record<string, unknown>): Task {
     created_at: String(row.created_at ?? ''),
     updated_at: String(row.updated_at ?? ''),
     title: String(row.title ?? ''),
+    description: (row.description as string | null) ?? null,
     done: Boolean(row.done),
+    status: ((row.status as Task['status']) ?? (row.done ? 'done' : 'todo')),
+    priority: ((row.priority as Task['priority']) ?? 'medium'),
+    category: ((row.category as Task['category']) ?? 'personal'),
     due_at: (row.due_at as string | null) ?? null,
     bucket: ((row.bucket as TaskBucket) ?? 'unscheduled'),
     scheduled_for: (row.scheduled_for as string | null) ?? null,
+    scheduled_time: (row.scheduled_time as string | null) ?? null,
+    estimated_minutes: (row.estimated_minutes as number | null) ?? null,
+    energy: (row.energy as Task['energy']) ?? null,
+    notes: (row.notes as string | null) ?? null,
+    is_quick: Boolean(row.is_quick),
     priority_rank: (row.priority_rank as 1 | 2 | 3 | null) ?? null,
     project_id: (row.project_id as string | null) ?? null,
+    goal_id: (row.goal_id as string | null) ?? null,
     waiting_on: (row.waiting_on as string | null) ?? null,
   }
 }
 
-export type TaskPatch = Partial<Pick<Task, 'bucket' | 'scheduled_for' | 'priority_rank' | 'due_at' | 'waiting_on'>>
+export function normaliseSubtask(row: Record<string, unknown>): Subtask {
+  return {
+    id: String(row.id),
+    user_id: String(row.user_id ?? ''),
+    created_at: String(row.created_at ?? ''),
+    updated_at: String(row.updated_at ?? ''),
+    task_id: String(row.task_id),
+    title: String(row.title ?? ''),
+    done: Boolean(row.done),
+    position: Number(row.position ?? 0),
+  }
+}
+
+export type TaskPatch = Partial<
+  Pick<
+    Task,
+    | 'title' | 'description' | 'status' | 'priority' | 'category' | 'bucket'
+    | 'due_at' | 'scheduled_for' | 'scheduled_time' | 'estimated_minutes'
+    | 'energy' | 'notes' | 'is_quick' | 'priority_rank' | 'project_id'
+    | 'goal_id' | 'waiting_on' | 'done'
+  >
+>
+
 
 export function useToday() {
   const { user } = useAuth()

@@ -48,3 +48,16 @@ export function Alert({ kind, children }: { kind: 'error' | 'info' | 'success'; 
         : 'border-[#e6d3a3] bg-[#faf3df] text-[#6b5a2e]'
   return <div role="alert" className={`rounded-xl border px-3.5 py-2.5 text-sm ${styles}`}>{children}</div>
 }
+
+export function ProgressBar({ percent, done, total }: { percent: number; done?: number; total?: number }) {
+  return (
+    <div>
+      <div className="h-2 w-full overflow-hidden rounded-full bg-[#f1e9da]" role="progressbar" aria-valuenow={percent} aria-valuemin={0} aria-valuemax={100} aria-label="Progress">
+        <div className="h-full rounded-full bg-gradient-to-r from-[#a8b89a] to-[#7d8b6f] transition-all" style={{ width: `${percent}%` }} />
+      </div>
+      {(done != null && total != null) && (
+        <p className="mt-1 text-xs text-[#8a7a65]">{done} of {total} tasks done · {percent}%</p>
+      )}
+    </div>
+  )
+}
